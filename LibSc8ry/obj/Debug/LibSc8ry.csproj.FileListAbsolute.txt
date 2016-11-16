@@ -1,0 +1,5 @@
+C:\Users\user\Documents\Sc8ry\LibSc8ry\bin\Debug\LibSc8ry.dll
+C:\Users\user\Documents\Sc8ry\LibSc8ry\bin\Debug\LibSc8ry.pdb
+C:\Users\user\Documents\Sc8ry\LibSc8ry\obj\Debug\LibSc8ry.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\Sc8ry\LibSc8ry\obj\Debug\LibSc8ry.dll
+C:\Users\user\Documents\Sc8ry\LibSc8ry\obj\Debug\LibSc8ry.pdb
