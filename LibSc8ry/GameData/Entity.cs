@@ -8,17 +8,17 @@ namespace LibSc8ry.GameData
 {
     public class Entity
     {
-        public PersonalityData personalityData = null;
-        public StatData statData = new StatData();
+        public string name = "thing";
+        public string description = "a very boring thing";
 
         public Entity()
         {
-            personalityData = new PersonalityData();
         }
 
-        public Entity(PersonalityData personalityData)
+        public Entity(string name, string description)
         {
-            this.personalityData = personalityData;
+            this.name = name;
+            this.description = description;
         }
     }
 }
