@@ -60,5 +60,19 @@ namespace LibSc8ry
 
             return Int32.Parse(_val);
         }
+
+        public static void LookDialogue(string name, string desc)
+        {
+            ConsoleUtils.PrintSeperator(name, '-', '<','>');
+
+            foreach (string s in desc.Split(new string[] { Environment.NewLine }, StringSplitOptions.None))
+            {
+                List<string> chunks = Utils.ChunksUpto(s, Console.WindowWidth - 5).ToList();
+                foreach (string chunk in chunks)
+                {
+                    Console.WriteLine("    " + chunk);
+                }
+            }
+        }
     }
 }

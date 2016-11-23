@@ -23,5 +23,10 @@ namespace LibSc8ry.GameData
             this.name = name;
             this.description = description;
         }
+
+        public void Look()
+        {
+
+        }
     }
 }
