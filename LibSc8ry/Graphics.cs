@@ -22,7 +22,7 @@ namespace LibSc8ry
             {
                 Console.WriteLine((i + 1) + ") " + args[i]);
             }
-            return ReadNumber(args.Length.ToString().Length);
+            return ReadNumber(args.Length.ToString().Length)-1;
         }
 
         public static int ReadNumber(int maxlength = 5)
@@ -61,16 +61,23 @@ namespace LibSc8ry
             return Int32.Parse(_val);
         }
 
-        public static void LookDialogue(string name, string desc)
+        public static void LookSeperator(string name)
         {
             ConsoleUtils.PrintSeperator(name, '-', '<','>');
+        }
 
-            foreach (string s in desc.Split(new string[] { Environment.NewLine }, StringSplitOptions.None))
+        public static void PrintPadded(string str, int space)
+        {
+            foreach (string s in str.Split(new string[] { Environment.NewLine }, StringSplitOptions.None))
             {
-                List<string> chunks = Utils.ChunksUpto(s, Console.WindowWidth - 5).ToList();
+                List<string> chunks = Utils.ChunksUpto(s, Console.WindowWidth - (space+1)).ToList();
                 foreach (string chunk in chunks)
                 {
-                    Console.WriteLine("    " + chunk);
+                    for (int i = 0; i < space; i++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.WriteLine(chunk);
                 }
             }
         }

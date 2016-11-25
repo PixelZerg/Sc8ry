@@ -13,5 +13,14 @@ namespace LibSc8ry
         {
             return input.Replace("{s}", genderData.PronounGenitive).Replace("{e}", genderData.Pronoun);
         }
+
+        public static string Article(string thing, bool capitalise = false)
+        {
+            if (thing.ToLower().StartsWith("a"))
+            {
+                return (capitalise)?"An":"an";
+            }
+            return (capitalise) ? "A" : "a";
+        }
     }
 }

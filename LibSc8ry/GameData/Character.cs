@@ -20,5 +20,15 @@ namespace LibSc8ry.GameData
         {
             this.personalityData = personalityData;
         }
+
+        public void Look()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Graphics.LookSeperator(this.personalityData.Name);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.White;
+            Graphics.PrintPadded(this.personalityData.Description, 4);
+            Console.ResetColor();
+        } 
     }
 }
