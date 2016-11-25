@@ -11,8 +11,7 @@ namespace LibSc8ry.GameData
         public string name = "Room";
         public string description = "A bare, empty, room.";
 
-        public List<Entity> entities = new List<Entity>();
-        public List<Character> characters = new List<Character>();
+        public List<IEntity> entities = new List<IEntity>();
 
         public Room()
         {
@@ -24,14 +23,9 @@ namespace LibSc8ry.GameData
             this.description = description;
         }
 
-        public void RemoveEntity(Entity e)
+        public void Remove(IEntity e)
         {
             this.entities.Remove(e);
-        }
-
-        public void RemoveCharacter(Character c)
-        {
-            this.characters.Remove(c);
         }
 
         public void Look()
@@ -43,15 +37,15 @@ namespace LibSc8ry.GameData
             Graphics.PrintPadded(this.description, 4);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            foreach (Character character in characters)
-            {
-                Graphics.PrintPadded(character.personalityData.Name + " is here", 5);
-            }
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            foreach (Entity entity in entities)
-            {
-                Graphics.PrintPadded(NLP.Article(entity.name,true)+" "+entity.name+ " is here", 5);
-            }
+            //foreach (Character character in characters)
+            //{
+            //    Graphics.PrintPadded(character.personalityData.Name + " is here", 5);
+            //}
+            //Console.ForegroundColor = ConsoleColor.Yellow;
+            //foreach (IEntity entity in entities)
+            //{
+            //    Graphics.PrintPadded(NLP.Article(entity.name,true)+" "+entity.name+ " is here", 5);
+            //}//TODO
             Console.ResetColor();
         }
     }

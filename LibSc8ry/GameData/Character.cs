@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibSc8ry.GameData
 {
-    public class Character
+    public class Character : IEntity
     {
         public PersonalityData personalityData = null;
         public StatData statData = new StatData();
@@ -19,6 +19,14 @@ namespace LibSc8ry.GameData
         public Character(PersonalityData personalityData)
         {
             this.personalityData = personalityData;
+        }
+
+        public EntityType entityType
+        {
+            get
+            {
+                return EntityType.Character;
+            }
         }
 
         public void Look()

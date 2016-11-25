@@ -45,6 +45,7 @@
     <Compile Include="GameData\EmotionData.cs" />
     <Compile Include="GameData\GenderData.cs" />
     <Compile Include="GameData\Map.cs" />
+    <Compile Include="GameData\Thing.cs" />
     <Compile Include="GameData\PersonalityData.cs" />
     <Compile Include="GameData\Entity.cs" />
     <Compile Include="GameData\Room.cs" />

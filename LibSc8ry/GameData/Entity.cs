@@ -6,29 +6,16 @@ using System.Threading.Tasks;
 
 namespace LibSc8ry.GameData
 {
-    public class Entity
+    public enum EntityType
     {
-        public string name = "thing";
-        public string description = "a very boring thing";
+        Thing,
+        Character,
+        Item
+    }
 
-        public Entity()
-        {
-        }
-
-        public Entity(string name, string description)
-        {
-            this.name = name;
-            this.description = description;
-        }
-
-        public void Look()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Graphics.LookSeperator(this.name);
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.White;
-            Graphics.PrintPadded(this.description,4);
-            Console.ResetColor();
-        }
+    public interface IEntity
+    {
+        void Look();
+        EntityType entityType { get; }
     }
 }

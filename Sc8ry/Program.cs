@@ -17,10 +17,10 @@ namespace Sc8ry
             r.description = "Grand windows are scattered around the large, dusty hall. The windows shimmer with brilliance.";
 
             Character c = new Character(new PersonalityData("A fat person", 20, "a cool fat person", new GenderData(Gender.Boy)));
-            r.characters.Add(c);
+            r.entities.Add(c);
 
-            r.entities.Add(new Entity());
-            r.entities.Add(new Entity("automobile", "so cool"));
+            r.entities.Add(new Thing());
+            r.entities.Add(new Thing("automobile", "so cool"));
 
             while (true)
             {
@@ -29,7 +29,7 @@ namespace Sc8ry
                 switch (Graphics.GetOption("Dance", "Sleep"))
                 {
                     case 0:
-                        if (r.characters.Contains(c))
+                        if (r.entities.Contains(c))
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("You dance heavily and the fat person dies due to the tremors");
@@ -39,7 +39,7 @@ namespace Sc8ry
                         {
                             Console.WriteLine("You dance like there's no-one watching!");
                         }
-                        r.characters.Remove(c);
+                        r.entities.Remove(c);
                         break;
                     case 1:
                         Console.WriteLine("You sleep....");
