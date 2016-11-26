@@ -215,6 +215,11 @@ namespace LibSc8ry
                 }
             }
             Console.WriteLine();
+            for (int j = 0; j < Console.WindowWidth - 1; j++)
+            {
+                Console.Write(' ');
+            }
+            Console.WriteLine();
         }
     }
 }

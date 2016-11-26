@@ -26,11 +26,11 @@ namespace Sc8ry
             map.AddRoom(r, 0, 0);
             map.AddRoom(r.Clone(), 0, 1);
             map.AddRoom(r.Clone(), 0, 2);
-            map.AddRoom(r.Clone(), 1, 2);
+            map.AddRoom(new Room("BANANA ROOM",""), 1, 2);
             map.AddRoom(r.Clone(), 2, 2);
-            map.AddRoom(r.Clone(), 2, 3);
+            map.AddRoom(new Room("you have a banana, you have a banana and you have a banana"," "), 2, 3);
             map.AddRoom(r.Clone(), 2, 1);
-            map.AddRoom(r.Clone(), 0, 3);
+            map.AddRoom(new Room("the guildy guild room"," "), 0, 3);
             map.AddRoom(r.Clone(), 0, 4);
             map.AddRoom(r.Clone(), -1, 4);
             map.AddRoom(new Room("a", ""), -2, 4);

@@ -52,6 +52,10 @@ namespace LibSc8ry.GameData
                 lzoom = zoom;
                 Render(curRoom, offx, offy, zoom);
 
+                Console.CursorTop = Console.WindowHeight;
+                Console.CursorLeft = 0;
+                Console.Write("Use the arrow keys to navigate, Z and X to zoom and press ENTER to exit");
+
                 Console.ForegroundColor = Console.BackgroundColor;
                 ConsoleKeyInfo k = Console.ReadKey();
                 Console.ResetColor();
