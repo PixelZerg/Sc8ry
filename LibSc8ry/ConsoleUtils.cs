@@ -202,6 +202,20 @@ namespace LibSc8ry
             Console.ReadKey();
             Console.ForegroundColor = store;
         }
+
+        public static void Clear()
+        {
+            Console.CursorTop = 0;
+            Console.CursorLeft = 0;
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                for (int j = 0; j < Console.WindowWidth-1; j++)
+                {
+                    Console.Write(' ');
+                }
+            }
+            Console.WriteLine();
+        }
     }
 }
 

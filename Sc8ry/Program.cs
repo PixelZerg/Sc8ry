@@ -33,10 +33,10 @@ namespace Sc8ry
             map.AddRoom(r.Clone(), 0, 3);
             map.AddRoom(r.Clone(), 0, 4);
             map.AddRoom(r.Clone(), -1, 4);
-            map.AddRoom(r.Clone(), -2, 4);
-            map.AddRoom(r.Clone(), -3, 4);
-            map.AddRoom(r.Clone(), -4, 4);
-            map.AddRoom(r.Clone(), -4, 5);
+            map.AddRoom(new Room("a", ""), -2, 4);
+            map.AddRoom(new Room("e", ""), -3, 4);
+            map.AddRoom(new Room("i", ""), -4, 4);
+            map.AddRoom(new Room("moo",""), -4, 5);
 
             map.Display(r);
             //while (true)

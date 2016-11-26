@@ -28,6 +28,10 @@ namespace LibSc8ry
 
         public void Draw(string fill = " ")
         {
+            if (this.Location.Y+this.Height >= Console.WindowHeight)
+            {
+                return;
+            }
             try
             {
                 Console.CursorTop = this.Location.Y;
@@ -65,7 +69,8 @@ namespace LibSc8ry
             {
                 //s += temp + "│" + space + "│" + "\n";
                 Console.ForegroundColor = fillColour;
-                Console.Write(temp);
+                //Console.Write(temp);
+                Console.CursorLeft = Location.X;
                 Console.ForegroundColor = this.BorderColour;
                 Console.Write("│");
                 Console.ForegroundColor = fillColour;
@@ -101,7 +106,8 @@ namespace LibSc8ry
 
             //Console.ba = fillColour;
             //s += temp + "└";
-            Console.Write(temp);
+            //Console.Write(temp);
+            Console.CursorLeft = Location.X;
             Console.ForegroundColor = this.BorderColour;
             Console.Write("└");
 

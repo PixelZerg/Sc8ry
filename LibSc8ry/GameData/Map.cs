@@ -26,7 +26,7 @@ namespace LibSc8ry.GameData
         /// <param name="ov">Wether it will replace a room if it already exists at that point or not</param>
         public void AddRoom(Room r, int x, int y, bool ov = true)
         {
-            AddRoom(r,new Point(x, y), ov);
+            AddRoom(r,new Point(x, y*-1), ov);
         }
 
         public void Display(Room curRoom)
@@ -36,68 +36,101 @@ namespace LibSc8ry.GameData
 
         public void Display(Point curRoom)
         {
-            Render(curRoom, new Point(curRoom.X,curRoom.Y), 5);
+            int zoom = 5;
+            int lzoom = 5;
+            int offx = 0;
+            int loffx = 0;
+            int offy = 0;
+            int loffy = 0;
+
+            while (true)
+            {
+                //ConsoleUtils.Clear();
+                ClearRender(curRoom, loffx, loffy, lzoom);
+                loffx = offx;
+                loffy = offy;
+                lzoom = zoom;
+                Render(curRoom, offx, offy, zoom);
+
+                Console.ForegroundColor = Console.BackgroundColor;
+                ConsoleKeyInfo k = Console.ReadKey();
+                Console.ResetColor();
+                if (k.Key == ConsoleKey.UpArrow)
+                {
+                    offy-=2;
+                }
+                else if (k.Key == ConsoleKey.DownArrow)
+                {
+                    offy+=2;
+                }
+
+                if (k.Key == ConsoleKey.LeftArrow)
+                {
+                    offx-=2;
+                }
+                else if (k.Key == ConsoleKey.RightArrow)
+                {
+                    offx+=2;
+                }
+
+                if (k.Key == ConsoleKey.Z)
+                {
+                    zoom++;
+                }
+                else if (k.Key == ConsoleKey.X)
+                {
+                    if (zoom > 1)
+                    {
+                        zoom--;
+                    }
+                }
+
+                if (k.Key == ConsoleKey.Enter)
+                {
+                    ConsoleUtils.Clear();
+                    break;
+                }
+            }
         }
 
-        public void Render(Point curRoom, Point focus, int zoom)
+        internal void Render(Point curRoom, int offx, int offy, int zoom)
         {
-            //Console.ReadKey();
-            //int centrex = Console.WindowWidth/2;
-            //int centrey = Console.WindowHeight/2;
-            //int offx = (centre.X * (zoom)) -centrex;
-            //int offy = (centre.Y * (zoom));// - centrey;
+            Point centre = new Point((Console.WindowWidth / 2) - zoom, (Console.WindowHeight / 2) - zoom / 2);
 
-            //Point p = new Point(0, 0);
-            //new ConsoleRectangle("t", zoom, zoom, new Point(Console.WindowWidth - zoom / 2 + (p.X*zoom + offx), centrey+(p.Y*zoom)+offy), ConsoleColor.White, ConsoleColor.White).Draw();
+            try
+            {
+                int offsetx = (curRoom.X * -1) + centre.X;
+                int offsety = (curRoom.Y * -1) + centre.Y;
 
-            //p = new Point(0, 1);
-            //new ConsoleRectangle("t", zoom, zoom, new Point(Console.WindowWidth - zoom / 2 + (p.X * zoom + offx), centrey + (p.Y * zoom)+offy), ConsoleColor.White, ConsoleColor.White).Draw();
+                foreach (var room in rooms)
+                {
+                    new ConsoleRectangle(room.Value.name, zoom * 2, zoom, new Point(
+                    (centre.X + (((room.Key.X + offsetx) - centre.X) * (zoom * 2 + 2))) + offx,
+                    (centre.Y + ((room.Key.Y + offsety) - centre.Y) * (zoom + 2)) + offy
+                    ), ((room.Key != curRoom) ? ConsoleColor.Blue : ConsoleColor.Cyan), ConsoleColor.Gray
+                    ).Draw();
+                }
+            }
+            catch
+            {
+                Console.Write("X");
+            }
+        }
 
-            //int offx = (Console.WindowWidth / 2)- (zoom/2)+2;
-            //int offy = (Console.WindowHeight / 2) - (zoom / 2)+2;
+        internal void ClearRender(Point curRoom, int offx, int offy, int zoom)
+        {
+            Point centre = new Point((Console.WindowWidth / 2) - zoom, (Console.WindowHeight / 2) - zoom / 2);
+            int offsetx = (curRoom.X * -1) + centre.X;
+            int offsety = (curRoom.Y * -1) + centre.Y;
 
-            //Point p = new Point(1, 1);
-            //new ConsoleRectangle("1,1", zoom, zoom/3, new Point((p.X*(zoom+2))+offx,(p.Y*(zoom/3+2))+offy), ConsoleColor.White, ConsoleColor.White).Draw();
-
-            //p = new Point(0, 2);
-            //new ConsoleRectangle("0,2", zoom, zoom/3, new Point((p.X * (zoom+2)) + offx, (p.Y * (zoom/3+2)) + offy), ConsoleColor.White, ConsoleColor.White).Draw();
-
-
-            //p = new Point(1, 0);
-            //new ConsoleRectangle("1,0", zoom, zoom/3, new Point((p.X * (zoom + 2)) + offx, (p.Y * (zoom/3 + 2)) + offy), ConsoleColor.White, ConsoleColor.White).Draw();
-
-            //p = new Point(0, 0);
-            //new ConsoleRectangle("0,0", zoom, zoom/3, new Point((p.X * (zoom + 2)) + offx, (p.Y * (zoom/3 + 2)) + offy), ConsoleColor.White, ConsoleColor.White).Draw();
-
-            //p = new Point(0, 1);
-            //new ConsoleRectangle("0,1", zoom, zoom/3, new Point((p.X * (zoom + 2)) + offx, (p.Y * (zoom/3 + 2)) + offy), ConsoleColor.White, ConsoleColor.White).Draw();
-
-            Point centre = new Point((Console.WindowWidth / 2)-zoom, (Console.WindowHeight / 2)-zoom/2);
-            int offsetx = (focus.X * -1) + centre.X;
-            int offsety = (focus.Y * -1) + centre.Y;
-
-            Point p;
-
-            p = new Point(1, 0);
-            new ConsoleRectangle("1,0", zoom*2, zoom, new Point(
-                centre.X + (((p.X + offsetx) - centre.X) * (zoom*2 + 2)),
-                centre.Y + ((p.Y + offsety) - centre.Y) * (zoom + 2)
-                ), ConsoleColor.Red, ConsoleColor.White
-                ).Draw();
-
-            p = new Point(0, 0);
-            new ConsoleRectangle("0,0", zoom*2, zoom, new Point(
-                centre.X + (((p.X + offsetx) - centre.X) * (zoom*2+2)),
-                centre.Y + ((p.Y + offsety) - centre.Y) * (zoom+2)
-                ), ConsoleColor.Red, ConsoleColor.White
-                ).Draw();
-
-            p = new Point(0, 1);
-            new ConsoleRectangle("0,1", zoom*2, zoom, new Point(
-                centre.X + (((p.X + offsetx) - centre.X) * (zoom*2+2)),
-                centre.Y + ((p.Y + offsety) - centre.Y) * (zoom+2)
-                ), ConsoleColor.Red, ConsoleColor.White
-                ).Draw();
+            foreach (var room in rooms)
+            {
+                new ConsoleRectangle(room.Value.name, zoom * 2, zoom, new Point(
+                (centre.X + (((room.Key.X + offsetx) - centre.X) * (zoom * 2 + 2))) + offx,
+                (centre.Y + ((room.Key.Y + offsety) - centre.Y) * (zoom + 2)) + offy
+                ), (Console.BackgroundColor), Console.BackgroundColor
+                ).Draw(" ");
+            }
         }
     }
 }
