@@ -18,5 +18,19 @@ namespace LibSc8ry.GameData
         public int Speed = 0;
 
         public EmotionData emotionData = new EmotionData();
+
+        public StatData Clone()
+        {
+            StatData r = new StatData();
+            r.Health = this.Health;
+            r.Reputation = this.Reputation;
+            r.Attack = this.Attack;
+            r.Wisdom = this.Wisdom;
+            r.Dexterity = this.Dexterity;
+            r.Defence = this.Defence;
+            r.Speed = this.Speed;
+            r.emotionData = this.emotionData.Clone();
+            return r;
+        }
     }
 }

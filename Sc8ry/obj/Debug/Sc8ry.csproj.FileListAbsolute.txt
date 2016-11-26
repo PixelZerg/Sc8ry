@@ -6,3 +6,11 @@ C:\Users\user\Documents\Sc8ry\Sc8ry\bin\Debug\LibSc8ry.pdb
 C:\Users\user\Documents\Sc8ry\Sc8ry\obj\Debug\Sc8ry.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\Sc8ry\Sc8ry\obj\Debug\Sc8ry.exe
 C:\Users\user\Documents\Sc8ry\Sc8ry\obj\Debug\Sc8ry.pdb
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\bin\Debug\Sc8ry.exe.config
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\obj\Debug\Sc8ry.exe
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\obj\Debug\Sc8ry.pdb
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\bin\Debug\Sc8ry.exe
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\bin\Debug\Sc8ry.pdb
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\bin\Debug\LibSc8ry.dll
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\bin\Debug\LibSc8ry.pdb
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\obj\Debug\Sc8ry.csprojResolveAssemblyReference.cache

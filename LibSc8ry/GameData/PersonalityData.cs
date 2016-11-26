@@ -48,5 +48,15 @@ namespace LibSc8ry.GameData
             this.Description = description;
             this.genderData = genderData;
         }
+
+        public PersonalityData Clone()
+        {
+            PersonalityData d = new PersonalityData();
+            d.Age = this.Age;
+            d.description = this.description;
+            d.genderData = this.genderData.Clone();
+            d.Name = this.Name;
+            return d;
+        }
     }
 }

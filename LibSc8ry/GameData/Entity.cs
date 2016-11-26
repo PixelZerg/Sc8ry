@@ -16,6 +16,9 @@ namespace LibSc8ry.GameData
     public interface IEntity
     {
         void Look();
-        EntityType entityType { get; }
+        string Name { get; }
+        EntityType EntityType { get; }
+
+        IEntity Clone();
     }
 }

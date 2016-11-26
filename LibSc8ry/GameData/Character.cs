@@ -21,7 +21,7 @@ namespace LibSc8ry.GameData
             this.personalityData = personalityData;
         }
 
-        public EntityType entityType
+        public EntityType EntityType
         {
             get
             {
@@ -29,10 +29,26 @@ namespace LibSc8ry.GameData
             }
         }
 
+        public string Name
+        {
+            get
+            {
+                return this.personalityData.Name;
+            }
+        }
+
+        public IEntity Clone()
+        {
+            Character c = new Character();
+            c.personalityData = this.personalityData.Clone();
+            c.statData = this.statData.Clone();
+            return c;
+        }
+
         public void Look()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Graphics.LookSeperator(this.personalityData.Name);
+            Graphics.LookSeperator(this.Name);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.White;
             Graphics.PrintPadded(this.personalityData.Description, 4);

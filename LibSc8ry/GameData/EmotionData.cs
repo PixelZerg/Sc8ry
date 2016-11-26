@@ -11,5 +11,14 @@ namespace LibSc8ry.GameData
         public int Happiness = 0;
         public int Anger = 0;
         public int Sucidalness = 0;
+
+        public EmotionData Clone()
+        {
+            EmotionData e = new EmotionData();
+            e.Happiness = this.Happiness;
+            e.Anger = this.Anger;
+            e.Sucidalness = this.Sucidalness;
+            return e;
+        }
     }
 }

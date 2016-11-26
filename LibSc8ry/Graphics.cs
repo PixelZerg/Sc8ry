@@ -66,20 +66,44 @@ namespace LibSc8ry
             ConsoleUtils.PrintSeperator(name, '-', '<','>');
         }
 
-        public static void PrintPadded(string str, int space)
+        public static void PrintPadded(string str, int space, bool trim = true)
         {
             foreach (string s in str.Split(new string[] { Environment.NewLine }, StringSplitOptions.None))
             {
                 List<string> chunks = Utils.ChunksUpto(s, Console.WindowWidth - (space+1)).ToList();
                 foreach (string chunk in chunks)
                 {
-                    for (int i = 0; i < space; i++)
-                    {
-                        Console.Write(" ");
-                    }
-                    Console.WriteLine(chunk);
+                    PrintSpace(space);
+                    string chunkk = (trim) ? chunk.Trim() : chunk;
+                    Console.WriteLine(chunkk);
                 }
             }
+        }
+
+        public static void PrintPaddedN(string str, int space, bool trim = true)
+        {
+            foreach (string s in str.Split(new string[] { Environment.NewLine }, StringSplitOptions.None))
+            {
+                List<string> chunks = Utils.ChunksUpto(s, Console.WindowWidth - (space + 1)).ToList();
+                foreach (string chunk in chunks)
+                {
+                    PrintSpace(space);
+                    string chunkk = (trim) ? chunk.Trim() : chunk;
+                    Console.Write(chunkk);
+                }
+            }
+        }
+
+        public static void PrintSpace(int no)
+        {
+            for (int i = 0; i < no; i++)
+            {
+                Console.Write(" ");
+            }
+        }
+
+        public static void PrintRect()
+        {
         }
     }
 }

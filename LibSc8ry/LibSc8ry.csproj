@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleRectangle.cs" />
     <Compile Include="ConsoleUtils.cs" />
     <Compile Include="GameData\Character.cs" />
     <Compile Include="GameData\EmotionData.cs" />
     <Compile Include="GameData\GenderData.cs" />
     <Compile Include="GameData\Map.cs" />
+    <Compile Include="GameData\Point.cs" />
     <Compile Include="GameData\Thing.cs" />
     <Compile Include="GameData\PersonalityData.cs" />
     <Compile Include="GameData\Entity.cs" />

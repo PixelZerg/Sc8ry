@@ -9,13 +9,33 @@ namespace LibSc8ry.GameData
     public class Thing : IEntity
     {
         public string name = "thing";
-        public string description = "a very boring thing";
+        private string description = "a very boring thing";
 
-        public EntityType entityType
+        public EntityType EntityType
         {
             get
             {
                 return EntityType.Thing;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return NLP.ExpandText(description, GenderData.Thing);
+            }
+            set
+            {
+                description = value;
             }
         }
 
@@ -26,7 +46,7 @@ namespace LibSc8ry.GameData
         public Thing(string name, string description)
         {
             this.name = name;
-            this.description = description;
+            this.Description = description;
         }
 
         public void Look()
@@ -35,8 +55,16 @@ namespace LibSc8ry.GameData
             Graphics.LookSeperator(this.name);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.White;
-            Graphics.PrintPadded(this.description, 4);
+            Graphics.PrintPadded(this.Description, 4);
             Console.ResetColor();
+        }
+
+        public IEntity Clone()
+        {
+            Thing t = new Thing();
+            t.description = this.description;
+            t.name = this.name;
+            return t;
         }
     }
 }
