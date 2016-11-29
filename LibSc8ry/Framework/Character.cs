@@ -26,6 +26,8 @@ namespace LibSc8ry.Framework
             this.personalityData = personalityData;
         }
 
+        //TODO: Add character.JoinRoom(room). Keep list of rooms. Also add Character.Kill() which will remove it from all rooms
+
         public EntityType EntityType
         {
             get

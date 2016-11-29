@@ -39,33 +39,33 @@ namespace Sc8ry
             map.AddRoom(new Room("moo",""), -4, 5);
 
             map.Display(r);
-            //while (true)
-            //{
-            //    r.Look();
-            //    Console.WriteLine("What do you want to do?");
-            //    switch (Graphics.GetOption("Dance", "Sleep"))
-            //    {
-            //        case 0:
-            //            if (r.entities.Contains(c))
-            //            {
-            //                Console.ForegroundColor = ConsoleColor.Red;
-            //                Console.WriteLine("You dance heavily and "+c.Name+" dies due to the tremors");
-            //                Console.ResetColor();
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("You dance like there's no-one watching!");
-            //            }
-            //            r.entities.Remove(c);
-            //            break;
-            //        case 1:
-            //            Console.WriteLine("You sleep....");
-            //            System.Threading.Thread.Sleep(3000);
-            //            Console.WriteLine("You wake up.");
-            //            System.Threading.Thread.Sleep(500);
-            //            break;
-            //    }
-            //}
+            while (true)
+            {
+                r.Look();
+                Console.WriteLine("What do you want to do?");
+                switch (Graphics.GetOption("Dance", "Sleep"))
+                {
+                    case 0:
+                        if (r.entities.Contains(c))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("You dance heavily and " + c.Name + " dies due to the tremors");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You dance like there's no-one watching!");
+                        }
+                        r.entities.Remove(c);
+                        break;
+                    case 1:
+                        Console.WriteLine("You sleep....");
+                        System.Threading.Thread.Sleep(3000);
+                        Console.WriteLine("You wake up.");
+                        System.Threading.Thread.Sleep(500);
+                        break;
+                }
+            }
         }
     }
 }
