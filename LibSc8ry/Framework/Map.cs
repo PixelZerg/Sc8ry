@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibSc8ry.GameData
+namespace LibSc8ry.Framework
 {
     public class Map
     {

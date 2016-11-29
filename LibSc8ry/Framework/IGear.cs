@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibSc8ry.GameData
+namespace LibSc8ry.Framework
 {
-    interface IItem
+    public interface IGear
     {
-        ItemData ItemData { get; set; }
+        GearData GearData { get; set; }
     }
 }

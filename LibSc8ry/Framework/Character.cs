@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibSc8ry.GameData
+namespace LibSc8ry.Framework
 {
     public class Character : IEntity
     {
         public PersonalityData personalityData = null;
         public StatData statData = new StatData();
+
+        /// <summary>
+        /// The first 2 slots is for Weapon and Gear and the rest is for item storage
+        /// </summary>
+        public IItem[] Slots = new IItem[12];
 
         public Character()
         {
@@ -40,6 +45,14 @@ namespace LibSc8ry.GameData
         public IEntity Clone()
         {
             Character c = new Character();
+            for (int i = 0; i < this.Slots.Length; i++)
+            {
+                try
+                {
+                    c.Slots[i] = this.Slots[i].Clone();
+                }
+                catch { }
+            }
             c.personalityData = this.personalityData.Clone();
             c.statData = this.statData.Clone();
             return c;

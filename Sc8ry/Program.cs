@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibSc8ry;
-using LibSc8ry.GameData;
+using LibSc8ry.Framework;
 
 namespace Sc8ry
 {

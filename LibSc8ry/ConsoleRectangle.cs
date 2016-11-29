@@ -10,13 +10,13 @@ namespace LibSc8ry
     {
         public int Width;
         public int Height;
-        public GameData.Point Location;
+        public Framework.Point Location;
         public ConsoleColor BorderColour;
         public ConsoleColor fillColour;
 
         public string Text = "";
 
-        public ConsoleRectangle(string text, int width, int hieght, GameData.Point location, ConsoleColor borderColour, ConsoleColor fillColour)
+        public ConsoleRectangle(string text, int width, int hieght, Framework.Point location, ConsoleColor borderColour, ConsoleColor fillColour)
         {
             this.Text = text;
             this.Width = width;

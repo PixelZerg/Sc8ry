@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibSc8ry.GameData
+namespace LibSc8ry.Framework
 {
-    interface IWeapon
+    public interface IItem
     {
-        WeaponData data { get; set; }
+        ItemData ItemData { get; set; }
+
+        IItem Clone();
     }
 }

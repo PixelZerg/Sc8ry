@@ -1,4 +1,4 @@
-﻿using LibSc8ry.GameData;
+﻿using LibSc8ry.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
