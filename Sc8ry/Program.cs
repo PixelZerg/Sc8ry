@@ -19,6 +19,7 @@ namespace Sc8ry
 
             Character c = new Character(new PersonalityData("Sushant", 20, "A cool fat person. {S} majestic rolls of fat bounce as the air particles surrounding {a} bounce into {a}. NB: {e} never cleans {r}.", GenderData.Boy));
             c.Slots[0] = new LibSc8ry.GameData.Weapons.Biro();
+            c.Slots[2] = new LibSc8ry.GameData.Weapons.Biro();
             c.JoinRoom(r);
 
             r.entities.Add(new Thing());

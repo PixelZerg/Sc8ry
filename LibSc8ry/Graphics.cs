@@ -66,8 +66,10 @@ namespace LibSc8ry
             ConsoleUtils.PrintSeperator(name, '-', '<','>');
         }
 
-        public static void PrintPadded(string str, int space, bool trim = true)
+        public static void PrintPadded(string strr, int space, bool trim = true)
         {
+            string str = WordBreakText(strr, space+1);
+
             foreach (string s in str.Split(new string[] { Environment.NewLine }, StringSplitOptions.None))
             {
                 List<string> chunks = Utils.ChunksUpto(s, Console.WindowWidth - (space+1)).ToList();
@@ -80,8 +82,9 @@ namespace LibSc8ry
             }
         }
 
-        public static void PrintPaddedN(string str, int space, bool trim = true)
+        public static void PrintPaddedN(string strr, int space, bool trim = true)
         {
+            string str = WordBreakText(strr, space+1);
             foreach (string s in str.Split(new string[] { Environment.NewLine }, StringSplitOptions.None))
             {
                 List<string> chunks = Utils.ChunksUpto(s, Console.WindowWidth - (space + 1)).ToList();
@@ -102,8 +105,24 @@ namespace LibSc8ry
             }
         }
 
-        public static void PrintRect()
+        public static string WordBreakText(string str, int off = 0)
         {
+            StringBuilder sb = new StringBuilder();
+
+            string[] words = str.Split(' ');
+            int remSpace = Console.WindowWidth-off;
+
+            foreach (string word in words)
+            {
+                if (remSpace - word.Length - 1 <= 0)
+                {
+                    sb.AppendLine();
+                    remSpace = Console.WindowWidth-off;
+                }
+                sb.Append(word+" ");
+                remSpace -= word.Length+1;
+            }
+            return sb.ToString();
         }
     }
 }

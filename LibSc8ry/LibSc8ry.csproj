@@ -61,6 +61,7 @@
     <Compile Include="GameData\Characters.cs" />
     <Compile Include="GameData\Things.cs" />
     <Compile Include="GameData\Weapons\Biro.cs" />
+    <Compile Include="GameUtils.cs" />
     <Compile Include="Graphics.cs" />
     <Compile Include="NLP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
