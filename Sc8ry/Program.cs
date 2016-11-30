@@ -12,7 +12,8 @@ namespace Sc8ry
     {
         public static void Main(string[] args)
         {
-            Console.ReadKey();
+            GameUtils.PrintText("Grand windows are scattered around the large, dusty hall. The windows shimmer with brilliance. Do not underestimate the power of banana");
+            GameUtils.PrintText("eueueu you poo");
             Room r = new Room();
             r.name = "Cool Hall";
             r.description = "Grand windows are scattered around the large, dusty hall. The windows shimmer with brilliance.";

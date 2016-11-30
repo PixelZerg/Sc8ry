@@ -6,16 +6,25 @@ using System.Threading.Tasks;
 
 namespace LibSc8ry
 {
-    public class GameUtils
+    public static class GameUtils
     {
-        public void PrintText(string text)
+        public static void PrintText(string textt)
         {
+            string text = Graphics.WordBreakText(textt);
+
             int no = 0;
             while (!Console.KeyAvailable && no < text.Length)
             {
-                //Console.Write()
+                Console.Write(text[no]);
+                System.Threading.Thread.Sleep(25);
                 no++;
             }
+            if (no < text.Length)
+            {
+                Console.Write(text.Substring(no, text.Length - no));
+            }
+            Console.WriteLine();
+            Console.ReadKey();
         }
     }
 }
