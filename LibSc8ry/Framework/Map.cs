@@ -36,6 +36,8 @@ namespace LibSc8ry.Framework
 
         public void Display(Point curRoom)
         {
+            ConsoleUtils.Clear();
+
             int zoom = 5;
             int lzoom = 5;
             int offx = 0;

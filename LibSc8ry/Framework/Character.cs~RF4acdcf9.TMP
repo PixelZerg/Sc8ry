@@ -11,7 +11,8 @@ namespace LibSc8ry.Framework
         Teacher,
         Student,
         Parent,
-        Other
+        Other,
+        Player
     }
 
     public class Character : IEntity
@@ -115,53 +116,27 @@ namespace LibSc8ry.Framework
             Console.ResetColor();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Graphics.PrintPadded(NLP.ExpandText("{E} has:", this.personalityData.genderData), 4);
-            for (int i = 0; i < this.Slots.Length;i++)
+            Graphics.PrintPadded(NLP.ExpandText("{E} has:", this.personalityData.genderData)+":", 4);
+            foreach (IItem item in this.Slots)
             {
-                if (this.Slots[i] != null)
+                switch (item.EntityType)
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    try
-                    {
-                        switch (this.Slots[i].ItemData.EquipmentType)
-                        {
-                            case EquipmentType.Weapon:
-                                Console.ForegroundColor = ConsoleColor.Cyan;
-                                break;
-                            case EquipmentType.Gear:
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                break;
-                        }
-                    }
-                    catch { }
-
-                    Graphics.PrintPaddedN(" " + NLP.Article(this.Slots[i].Name, true)+" "+ this.Slots[i].Name, 5);
-                    if (i == 0)
-                    {
-                        Console.Write(NLP.ExpandText(" ({s} weapon)", this.personalityData.genderData));
-                    }
-                    else if (i == 1)
-                    {
-                        Console.Write(NLP.ExpandText(" ({s} gear)", this.personalityData.genderData));
-                    }
-                    Console.WriteLine();
-                }
-                else
-                {
-                    if (i == 0)
-                    {
+                    case EntityType.Character:
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        Graphics.PrintPadded("<No weapon>", 5);
-                    }
-                    else if (i == 1)
-                    {
+                        Graphics.PrintSpace(4);
+                        break;
+                    case EntityType.Thing:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Graphics.PrintPaddedN(NLP.Article(item.Name, true), 5);
+                        break;
+                    case EntityType.Item:
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Graphics.PrintPadded("<No gear>", 5);
-
-                    }
+                        Graphics.PrintPaddedN(NLP.Article(item.Name, true), 5);
+                        break;
                 }
+                Console.WriteLine(" " + item.Name, 5);
             }
             Console.ResetColor();
-        }
+        } 
     }
 }

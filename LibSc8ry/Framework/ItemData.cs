@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace LibSc8ry.Framework
 {
-    public class ItemData
+    public enum EquipmentType
     {
-        public enum EquipmentType
-        {
-            Uknown,
-            Weapon,
-            Gear
-        }
+        Uknown,
+        Weapon,
+        Gear
+    }
+
+    public class ItemData
+    { 
 
         public bool IsConsumable = false;
-        public EquipmentType Equipment = EquipmentType.Uknown;
+        public EquipmentType EquipmentType = EquipmentType.Uknown;
     }
 }

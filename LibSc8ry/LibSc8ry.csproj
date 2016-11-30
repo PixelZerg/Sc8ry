@@ -58,10 +58,17 @@
     <Compile Include="Framework\Room.cs" />
     <Compile Include="Framework\StatData.cs" />
     <Compile Include="Framework\WeaponData.cs" />
+    <Compile Include="GameData\Characters.cs" />
+    <Compile Include="GameData\Things.cs" />
+    <Compile Include="GameData\Weapons\Biro.cs" />
     <Compile Include="Graphics.cs" />
     <Compile Include="NLP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GameData\Gears\" />
+    <Folder Include="GameData\Items\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

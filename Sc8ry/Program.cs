@@ -12,19 +12,20 @@ namespace Sc8ry
     {
         public static void Main(string[] args)
         {
+            Console.ReadKey();
             Room r = new Room();
             r.name = "Cool Hall";
             r.description = "Grand windows are scattered around the large, dusty hall. The windows shimmer with brilliance.";
 
             Character c = new Character(new PersonalityData("Sushant", 20, "A cool fat person. {S} majestic rolls of fat bounce as the air particles surrounding {a} bounce into {a}. NB: {e} never cleans {r}.", GenderData.Boy));
-            //r.entities.Add(c);
+            c.Slots[0] = new LibSc8ry.GameData.Weapons.Biro();
             c.JoinRoom(r);
 
             r.entities.Add(new Thing());
             r.entities.Add(new Thing("automobile", "{E} is so cool, man!!!"));
 
             c.Look();
-            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(c));
+            //Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(c));
             Console.ReadKey();
 
             Map map = new Map();
