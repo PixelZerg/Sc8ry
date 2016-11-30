@@ -10,6 +10,9 @@ namespace LibSc8ry.Framework
     {
         ItemData ItemData { get; set; }
 
+        string Name { get; }
+        string Description { get; }
+
         IItem Clone();
     }
 }

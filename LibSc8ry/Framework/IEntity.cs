@@ -17,6 +17,8 @@ namespace LibSc8ry.Framework
     {
         void Look();
         string Name { get; }
+        string Description { get; }
+
         EntityType EntityType { get; }
 
         IEntity Clone();

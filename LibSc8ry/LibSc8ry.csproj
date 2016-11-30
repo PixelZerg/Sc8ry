@@ -54,7 +54,7 @@
     <Compile Include="Framework\Point.cs" />
     <Compile Include="Framework\Thing.cs" />
     <Compile Include="Framework\PersonalityData.cs" />
-    <Compile Include="Framework\Entity.cs" />
+    <Compile Include="Framework\IEntity.cs" />
     <Compile Include="Framework\Room.cs" />
     <Compile Include="Framework\StatData.cs" />
     <Compile Include="Framework\WeaponData.cs" />

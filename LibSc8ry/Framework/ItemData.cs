@@ -11,12 +11,11 @@ namespace LibSc8ry.Framework
         public enum EquipmentType
         {
             Uknown,
-            None,
             Weapon,
             Gear
         }
 
         public bool IsConsumable = false;
-        public EquipmentType Equipment = EquipmentType.None;
+        public EquipmentType Equipment = EquipmentType.Uknown;
     }
 }

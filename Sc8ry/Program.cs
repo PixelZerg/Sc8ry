@@ -17,10 +17,15 @@ namespace Sc8ry
             r.description = "Grand windows are scattered around the large, dusty hall. The windows shimmer with brilliance.";
 
             Character c = new Character(new PersonalityData("Sushant", 20, "A cool fat person. {S} majestic rolls of fat bounce as the air particles surrounding {a} bounce into {a}. NB: {e} never cleans {r}.", GenderData.Boy));
-            r.entities.Add(c);
+            //r.entities.Add(c);
+            c.JoinRoom(r);
 
             r.entities.Add(new Thing());
             r.entities.Add(new Thing("automobile", "{E} is so cool, man!!!"));
+
+            c.Look();
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(c));
+            Console.ReadKey();
 
             Map map = new Map();
             map.AddRoom(r, 0, 0);
@@ -51,12 +56,12 @@ namespace Sc8ry
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("You dance heavily and " + c.Name + " dies due to the tremors");
                             Console.ResetColor();
+                            c.Kill();
                         }
                         else
                         {
                             Console.WriteLine("You dance like there's no-one watching!");
                         }
-                        r.entities.Remove(c);
                         break;
                     case 1:
                         Console.WriteLine("You sleep....");

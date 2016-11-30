@@ -6,10 +6,25 @@ using System.Threading.Tasks;
 
 namespace LibSc8ry.Framework
 {
+    public enum CharacterType
+    {
+        Teacher,
+        Student,
+        Parent,
+        Other
+    }
+
     public class Character : IEntity
     {
+        public bool IsDead { get; private set; }
+
         public PersonalityData personalityData = null;
         public StatData statData = new StatData();
+
+        // TODO: replace with index
+        public Room curRoom = null;
+
+        public CharacterType characterType = CharacterType.Other;
 
         /// <summary>
         /// The first 2 slots is for Weapon and Gear and the rest is for item storage
@@ -26,7 +41,29 @@ namespace LibSc8ry.Framework
             this.personalityData = personalityData;
         }
 
-        //TODO: Add character.JoinRoom(room). Keep list of rooms. Also add Character.Kill() which will remove it from all rooms
+        public void JoinRoom(Room room)
+        {
+            this.LeaveRoom();
+            curRoom = room;
+            curRoom.entities.Add(this);
+        }
+
+        public void LeaveRoom()
+        {
+            if (curRoom != null)
+            {
+                curRoom.entities.Remove(this);
+            }
+        }
+
+        public void Kill()
+        {
+            this.LeaveRoom();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(this.Name + " died");
+            Console.ResetColor();
+            this.IsDead = true;
+        }
 
         public EntityType EntityType
         {
@@ -41,6 +78,14 @@ namespace LibSc8ry.Framework
             get
             {
                 return this.personalityData.Name;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return this.personalityData.Description;
             }
         }
 
