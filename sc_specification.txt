@@ -1,0 +1,105 @@
+.sc File Format Specificiation v1.0
+Bytes> Info
+
+MAIN HEADER:
+4> Int32 Length Indicator (bytecount)
+2> UShort 0 based value type (Setting, Thing, Character, Item, Weapon, Gear)
+
+	[0]
+	Chapter:
+	4> Int32 ChapterNo
+
+	[!0]
+	SECTION HEADER:
+ 	4> Int32 Length Indicator (bytecount)
+ 	2> UShort 0 based DataType Selector (nd, charbase, personalityData, statData, emotionData, genderData, itemData, weapondata, geardata)
+
+		[0]
+		ND:
+			Name:
+			4> Int32 Length Indicator (x)
+			x> UTF8 string "Name"
+
+			Description:
+			4> Int32 Length Indicator (x)
+			x> UTF8 string "Description"
+
+		[1]
+		CharBase:
+		1> Bool IsDead
+		2> UShort Enum CharacterType
+		4> Int32 ItemID for slot 1 (1-based)
+		4> Int32 ItemID for slot 2 (1-based)
+		4> Int32 ItemID for slot 3 (1-based)
+		4> Int32 ItemID for slot 4 (1-based)
+		4> Int32 ItemID for slot 5 (1-based)
+		4> Int32 ItemID for slot 6 (1-based)
+		4> Int32 ItemID for slot 7 (1-based)
+		4> Int32 ItemID for slot 8 (1-based)
+		4> Int32 ItemID for slot 9 (1-based)
+		4> Int32 ItemID for slot 10 (1-based)
+		4> Int32 ItemID for slot 11 (1-based)
+		4> Int32 ItemID for slot 12 (1-based)
+
+		[2]
+		GenderData:
+		1> Bool UseGenderEnum
+			[1]:
+			2> UShort Enum Gender
+
+			[0]:
+			Pronoun:
+			4> Int32 Length Indicator (x)
+			x> UTF8 string "Pronoun"
+
+			PronounGenitive:
+			4> Int32 Length Indicator (x)
+			x> UTF8 string "PronounGenitive"
+
+			PronounAcc:
+			4> Int32 Length Indicator (x)
+			x> UTF8 string "PronounAcc"
+
+			PronounReflexive:
+			4> Int32 Length Indicator (x)
+			x> UTF8 string "PronounReflexive"
+
+		[3]
+		personalityData:
+		{inherit ND}
+		{inherit GenderData}
+		4> Int32 Age
+
+		[4]
+		EmotionData:
+		4> Int32 Happiness
+		4> Int32 Anger
+		4> Int32 Suicidalness
+
+		[5]
+		StatData:
+		{inherit EmotionData}
+		4> Int32 Health
+		4> Int32 Reputation
+		4> Int32 Attack
+		4> Int32 Wisdom
+		4> Int32 Dexterity
+		4> Int32 Defense
+		4> Int32 Speed
+
+		[6]
+		ItemData:
+		4> Int32 ItemID
+		1> Bool IsConsumable
+		2> UShort Enum EquipmentType
+
+		[7]
+		WeaponData:
+		{inherit ItemData}
+		4> Int32 Damage
+		4> Int32 Speed
+		4> Int32 Accuracy (/by 100 and load as double)
+
+		GearData:
+		{inherit ItemData}
+		4> Int32 Defense
