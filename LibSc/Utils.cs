@@ -19,6 +19,15 @@ namespace LibSc
         WeaponData,
         GearData
     }
+    public enum ValueType
+    {
+        Setting,
+        Thing,
+        Character,
+        Item,
+        Weapon,
+        Gear
+    }
     public class Utils
     {
         public static byte[] StrToBytes(string str)
@@ -39,6 +48,18 @@ namespace LibSc
             {
                 bw.Write(b.Length + 2);
                 bw.Write((ushort)dataType);
+                bw.Write(b);
+                return ms.ToArray();
+            }
+        }
+
+        public static byte[] AddMainHeader(byte[] b, ValueType valueType)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            using (BinaryWriter bw = new BinaryWriter(ms, Encoding.UTF8))
+            {
+                bw.Write(b.Length + 2);
+                bw.Write((ushort)valueType);
                 bw.Write(b);
                 return ms.ToArray();
             }
