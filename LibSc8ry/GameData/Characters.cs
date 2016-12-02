@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,18 @@ namespace LibSc8ry.GameData
         public LibSc8ry.Framework.Character mathTeacher = new LibSc8ry.Framework.Character();
         public Framework.Character Iapnes = new Framework.Character();
 
+        public FileInfo f = new FileInfo("characterdata.dat");
+
         public void Load()
         {
-            this.LoadDefault();
+            if (!f.Exists)
+            {
+                f.Create();
+                this.LoadDefault();
+                Save();
+                return;
+            }
+
         }
 
         private void LoadDefault()
@@ -43,7 +53,16 @@ namespace LibSc8ry.GameData
 
         public void Save()
         {
-            throw new NotImplementedException();
+            using (StreamWriter sw = new StreamWriter(f.FullName))
+            {
+                sw.WriteLine(SerialiseCharacter(pooTeacher));
+            }
+        }
+
+        private string SerialiseCharacter(Framework.Character cc)
+        {
+            Framework.Character c = (Framework.Character)cc.Clone();
+            return (Newtonsoft.Json.JsonConvert.SerializeObject(c, Newtonsoft.Json.Formatting.None));
         }
     }
 }
