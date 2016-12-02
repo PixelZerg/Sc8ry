@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibSc8ry.Framework
+namespace LibSc.DataModel
 {
-   public class GearData
+    public class Thing
     {
-        public int Defence = 0;
+        public ND nd = new ND();
     }
 }

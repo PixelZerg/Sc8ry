@@ -65,6 +65,12 @@ namespace LibSc8ry.Framework
             this.IsDead = true;
         }
 
+        public void KillSilent()
+        {
+            this.LeaveRoom();
+            this.IsDead = true;
+        }
+
         public EntityType EntityType
         {
             get

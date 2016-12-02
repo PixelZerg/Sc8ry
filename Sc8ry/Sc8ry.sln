@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 14 for Windows Desktop
+# Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sc8ry", "Sc8ry.csproj", "{29766210-EFAE-457B-9B58-9306A97252AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibSc8ry", "..\LibSc8ry\LibSc8ry.csproj", "{45CF73DE-35D4-46A5-A6B8-C523B2381EB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibSc", "..\LibSc\LibSc.csproj", "{80E237AB-41FD-43EB-83EA-CD674420318D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{45CF73DE-35D4-46A5-A6B8-C523B2381EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45CF73DE-35D4-46A5-A6B8-C523B2381EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45CF73DE-35D4-46A5-A6B8-C523B2381EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E237AB-41FD-43EB-83EA-CD674420318D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E237AB-41FD-43EB-83EA-CD674420318D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E237AB-41FD-43EB-83EA-CD674420318D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E237AB-41FD-43EB-83EA-CD674420318D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

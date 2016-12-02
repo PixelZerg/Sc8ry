@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibSc8ry.Framework
+namespace LibSc
 {
-   public class GearData
+    public interface IData
     {
-        public int Defence = 0;
+        byte[] GetBytes();
     }
 }

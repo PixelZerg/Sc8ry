@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{29766210-EFAE-457B-9B58-9306A97252AD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{80E237AB-41FD-43EB-83EA-CD674420318D}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sc8ry</RootNamespace>
-    <AssemblyName>Sc8ry</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>LibSc</RootNamespace>
+    <AssemblyName>LibSc</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,18 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DataModel\Character.cs" />
+    <Compile Include="DataModel\CharBase.cs" />
+    <Compile Include="DataModel\EmotionData.cs" />
+    <Compile Include="DataModel\GearData.cs" />
+    <Compile Include="DataModel\GenderData.cs" />
+    <Compile Include="DataModel\IITem.cs" />
+    <Compile Include="DataModel\Item.cs" />
+    <Compile Include="DataModel\ItemData.cs" />
+    <Compile Include="DataModel\ND.cs" />
+    <Compile Include="DataModel\PersonalityData.cs" />
+    <Compile Include="DataModel\StatData.cs" />
+    <Compile Include="DataModel\Thing.cs" />
+    <Compile Include="DataModel\Gear.cs" />
+    <Compile Include="DataModel\Weapon.cs" />
+    <Compile Include="DataModel\WeaponData.cs" />
+    <Compile Include="IData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LibSc8ry\LibSc8ry.csproj">
-      <Project>{45cf73de-35d4-46a5-a6b8-c523b2381eb6}</Project>
-      <Name>LibSc8ry</Name>
-    </ProjectReference>
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

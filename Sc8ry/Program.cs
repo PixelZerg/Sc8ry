@@ -13,7 +13,7 @@ namespace Sc8ry
         //golden oak academy
         public static void Main(string[] args)
         {
-            new LibSc8ry.GameData.Characters().Save();
+            //new LibSc8ry.GameData.Characters().Save();
         }
     }
 }
