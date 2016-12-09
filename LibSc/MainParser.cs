@@ -10,15 +10,7 @@ namespace LibSc
     public class MainParser
     {
         //Sections
-        public List<DataModel.ND> NDSections = new List<DataModel.ND>();
-        public List<DataModel.CharBase> CharBaseSections = new List<DataModel.CharBase>();
-        public List<DataModel.GenderData> GenderDataSections = new List<DataModel.GenderData>();
-        public List<DataModel.PersonalityData> PersonalityDataSections = new List<DataModel.PersonalityData>();
-        public List<DataModel.EmotionData> EmotionDataSections = new List<DataModel.EmotionData>();
-        public List<DataModel.StatData> StatDataSections = new List<DataModel.StatData>();
-        public List<DataModel.ItemData> ItemDataSections = new List<DataModel.ItemData>();
-        public List<DataModel.WeaponData> WeaponDataSections = new List<DataModel.WeaponData>();
-        public List<DataModel.GearData> GearDataSections = new List<DataModel.GearData>();
+        public Dictionary<LibSc.DataType, LibSc.IData> Sections = new Dictionary<DataType, IData>();
 
         private int byteCount = -1;
         public int Type = -1;
@@ -44,13 +36,56 @@ namespace LibSc
 
             foreach (var section in sections)
             {
-                using (MemoryStream ms = new MemoryStream(section))
-                using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
-                {
-                    DataType dataType = (DataType)br.ReadUInt16();
-                    byte[] data = br.ReadBytes(section.Length - 2);
-                }
+                ParseSection(section);
             }
+        }
+
+        /// <summary>
+        ///  No length - just dataType in header
+        /// </summary>
+        public void ParseSection(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
+            {
+                DataType dataType = (DataType)br.ReadUInt16();
+                byte[] rawdata = br.ReadBytes(bytes.Length - 2);
+
+                IData data = (IData)Activator.CreateInstance(GetClassType(dataType));
+                data.ParseBytes(rawdata);
+
+                if (this.Sections.ContainsKey(dataType))
+                {
+                    this.Sections.Remove(dataType);
+                }
+                this.Sections.Add(dataType, data);
+            }
+        }
+
+        public static Type GetClassType(DataType d)
+        {
+            switch (d)
+            {
+                case DataType.CharBase:
+                    return typeof(LibSc.DataModel.CharBase);
+                case DataType.EmotionData:
+                    return typeof(LibSc.DataModel.EmotionData);
+                case DataType.GearData:
+                    return typeof(LibSc.DataModel.GearData);
+                case DataType.GenderData:
+                    return typeof(LibSc.DataModel.GenderData);
+                case DataType.ItemData:
+                    return typeof(LibSc.DataModel.ItemData);
+                case DataType.ND:
+                    return typeof(LibSc.DataModel.ND);
+                case DataType.PersonalityData:
+                    return typeof(LibSc.DataModel.PersonalityData);
+                case DataType.StatData:
+                    return typeof(LibSc.DataModel.StatData);
+                case DataType.WeaponData:
+                    return typeof(LibSc.DataModel.WeaponData);
+            }
+            return null;
         }
 
         private List<byte[]> Split(byte[] bytes)

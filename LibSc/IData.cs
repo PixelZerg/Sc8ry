@@ -9,6 +9,6 @@ namespace LibSc
     public interface IData
     {
         byte[] GetBytes();
-        //void ParseBytes(byte[] bytes);
+        void ParseBytes(byte[] bytes);
     }
 }
