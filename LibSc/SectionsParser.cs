@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibSc
 {
-    public class MainParser
+    public class SectionsParser
     {
         //Sections
         public Dictionary<LibSc.DataType, LibSc.IData> Sections = new Dictionary<DataType, IData>();
@@ -25,7 +25,7 @@ namespace LibSc
                 {
                     this.byteCount = br.ReadInt32();
                     this.Type = (Int32)br.ReadUInt16();
-                    raw = br.ReadBytes(byteCount - 2); //maybe -4 too
+                    raw = br.ReadBytes(byteCount - 2);
                 }
             }
             else
