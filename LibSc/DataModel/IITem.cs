@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibSc.DataModel
 {
-    public interface IItem
+    public interface IItem : IData
     {
         ND nd
         {
