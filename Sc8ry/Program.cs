@@ -38,7 +38,8 @@ namespace Sc8ry
             //}
 
             LibSc.DataModel.Gear g = new LibSc.DataModel.Gear();
-            new LibSc.MainParser().Parse(g.GetBytes());
+            byte[] b = g.GetBytes();
+            new LibSc.MainParser().Parse(b);
 
         }
     }

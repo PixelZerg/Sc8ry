@@ -33,7 +33,7 @@ namespace LibSc
                 {
                     this.byteCount = br.ReadInt32();
                     this.Type = (Int32)br.ReadUInt16();
-                    raw = br.ReadBytes(byteCount - 2);
+                    raw = br.ReadBytes(byteCount - 2); //maybe -4 too
                 }
             }
             else
@@ -44,7 +44,7 @@ namespace LibSc
 
             foreach (var section in sections)
             {
-                using (MemoryStream ms = new MemoryStream(bytes))
+                using (MemoryStream ms = new MemoryStream(section))
                 using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
                 {
                     DataType dataType = (DataType)br.ReadUInt16();
