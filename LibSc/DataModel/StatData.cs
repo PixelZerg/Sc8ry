@@ -32,5 +32,20 @@ namespace LibSc.DataModel
                 return Utils.AddSectionHeader(ms.ToArray(), DataType.StatData);
             }
         }
+
+        public void ParseBytes(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
+            {
+                this.Health = br.ReadInt32();
+                this.Reputation = br.ReadInt32();
+                this.Attack = br.ReadInt32();
+                this.Wisdom = br.ReadInt32();
+                this.Dexterity = br.ReadInt32();
+                this.Defense = br.ReadInt32();
+                this.Speed = br.ReadInt32();
+            }
+        }
     }
 }

@@ -27,5 +27,13 @@ namespace LibSc.DataModel
                 return Utils.AddMainHeader(ms.ToArray(), ValueType.Gear);
             }
         }
+
+        public void TODOParseBytes(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
+            {
+            }
+        }
     }
 }

@@ -37,8 +37,6 @@ namespace Sc8ry
                 c2.ParseBytes(br.ReadBytes(len-2));
             }
 
-            Console.WriteLine(c.GetHashCode());
-            Console.WriteLine(c2.GetHashCode());
         }
     }
 }

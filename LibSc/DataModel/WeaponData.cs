@@ -25,5 +25,16 @@ namespace LibSc.DataModel
 
             }
         }
+
+        public void ParseBytes(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
+            {
+                this.Damage = br.ReadInt32();
+                this.Speed = br.ReadInt32();
+                this.Accuracy = (double)(br.ReadInt32() / 100d);
+            }
+        }
     }
 }

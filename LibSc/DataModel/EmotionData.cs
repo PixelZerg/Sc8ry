@@ -24,5 +24,16 @@ namespace LibSc.DataModel
                 return Utils.AddSectionHeader(ms.ToArray(), DataType.EmotionData);
             }
         }
+
+        public void ParseBytes(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
+            {
+                this.Happiness = br.ReadInt32();
+                this.Anger = br.ReadInt32();
+                this.Suicidalness = br.ReadInt32();
+            }
+        }
     }
 }

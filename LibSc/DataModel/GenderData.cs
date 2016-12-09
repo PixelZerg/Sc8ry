@@ -38,5 +38,25 @@ namespace LibSc.DataModel
                 return Utils.AddSectionHeader(ms.ToArray(), DataType.GenderData);
             }
         }
+
+        public void ParseBytes(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
+            {
+                this.UseGenderEnum = br.ReadBoolean();
+                if (this.UseGenderEnum)
+                {
+                    this.Gender = (Utils.Gender)br.ReadUInt16();
+                }
+                else
+                {
+                    this.Pronoun = Utils.ReadStr(br);
+                    this.PronounGenitive = Utils.ReadStr(br);
+                    this.PronounAcc = Utils.ReadStr(br);
+                    this.PronounReflexive = Utils.ReadStr(br);
+                }
+            }
+        }
     }
 }

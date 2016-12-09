@@ -24,5 +24,16 @@ namespace LibSc.DataModel
                 return Utils.AddSectionHeader(ms.ToArray(), DataType.ItemData);
             }
         }
+
+        public void ParseBytes(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
+            {
+                this.ItemId = br.ReadInt32();
+                this.IsConsumable = br.ReadBoolean();
+                this.ItemType = (Utils.ItemType)br.ReadUInt16();
+            }
+        }
     }
 }
