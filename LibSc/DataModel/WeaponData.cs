@@ -22,7 +22,6 @@ namespace LibSc.DataModel
                 bw.Write(this.Speed);
                 bw.Write((int)(this.Accuracy*100));
                 return Utils.AddSectionHeader(ms.ToArray(), DataType.WeaponData);
-
             }
         }
 

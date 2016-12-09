@@ -28,11 +28,19 @@ namespace LibSc.DataModel
             }
         }
 
-        public void TODOParseBytes(byte[] bytes)
+        public void ParseBytes(byte[] bytes)
         {
             using (MemoryStream ms = new MemoryStream(bytes))
             using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
             {
+                int remaining = bytes.Length;
+                while (remaining > 6) // {In32 (4)} + {UInt16 (2)}
+                {
+                    //Section Header
+                    int len = br.ReadInt32();
+                    ushort dataType = br.ReadUInt16();
+
+                }
             }
         }
     }
