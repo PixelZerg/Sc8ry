@@ -11,7 +11,7 @@ namespace LibSc.DataModel
     {
         public Int32 ItemId = 0;
         public bool IsConsumable = false;
-        public ushort EquipmentType = 0;
+        public Utils.ItemType ItemType = 0;
 
         public byte[] GetBytes()
         {
@@ -19,8 +19,8 @@ namespace LibSc.DataModel
             using (BinaryWriter bw = new BinaryWriter(ms, Encoding.UTF8))
             {
                 bw.Write(this.ItemId);
-                bw.Write(IsConsumable);
-                bw.Write(EquipmentType);
+                bw.Write(this.IsConsumable);
+                bw.Write((ushort)this.ItemType);
                 return Utils.AddSectionHeader(ms.ToArray(), DataType.ItemData);
             }
         }

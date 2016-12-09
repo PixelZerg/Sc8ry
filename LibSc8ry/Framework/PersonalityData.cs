@@ -8,9 +8,10 @@ namespace LibSc8ry.Framework
 {
     public enum Gender
     {
-        Girl,
+        Thing,
         Boy,
-        Unkown,
+        Girl,
+        Other,
     }
     public class PersonalityData
     {
@@ -23,7 +24,7 @@ namespace LibSc8ry.Framework
         /// </summary>
         private string description = "{s} emotionless face is vacant";
 
-        public GenderData genderData = new GenderData(Gender.Unkown);
+        public GenderData genderData = new GenderData(Gender.Thing);
 
         public string Description
         {

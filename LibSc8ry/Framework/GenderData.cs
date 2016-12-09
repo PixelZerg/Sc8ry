@@ -10,7 +10,7 @@ namespace LibSc8ry.Framework
     {
         public static GenderData Boy = new GenderData(Gender.Boy);
         public static GenderData Girl = new GenderData(Gender.Girl);
-        public static GenderData Thing = new GenderData(Gender.Unkown);
+        public static GenderData Thing = new GenderData(Gender.Thing);
 
         public string Pronoun = "he";
         public string PronounGenitive = "his";
@@ -30,7 +30,7 @@ namespace LibSc8ry.Framework
                     this.PronounAcc = "her";
                     this.PronounReflexive = "herself";
                     return;
-                case Gender.Unkown:
+                case Gender.Thing:
                     this.Pronoun = "it";
                     this.PronounGenitive = "its";
                     this.PronounAcc = "it";

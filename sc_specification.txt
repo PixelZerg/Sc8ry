@@ -91,7 +91,7 @@ MAIN HEADER:
 		ItemData:
 		4> Int32 ItemID
 		1> Bool IsConsumable
-		2> UShort Enum EquipmentType
+		2> UShort Enum ItemType
 
 		[7]
 		WeaponData:

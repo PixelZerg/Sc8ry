@@ -10,7 +10,7 @@ namespace LibSc.DataModel
     public class GenderData : IData
     {
         public bool UseGenderEnum = true;
-        public ushort Gender = 0;
+        public Utils.Gender Gender = 0;
 
         public string Pronoun = null;
         public string PronounGenitive = null;

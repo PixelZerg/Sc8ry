@@ -1,0 +1,5 @@
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\LibSc\bin\Debug\LibSc.dll
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\LibSc\bin\Debug\LibSc.pdb
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\LibSc\obj\Debug\LibSc.csprojResolveAssemblyReference.cache
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\LibSc\obj\Debug\LibSc.dll
+C:\Users\PixelZerg\Documents\GitHub\Sc8ry\LibSc\obj\Debug\LibSc.pdb

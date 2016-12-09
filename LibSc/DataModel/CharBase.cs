@@ -10,7 +10,7 @@ namespace LibSc.DataModel
     public class CharBase : IData
     {
         public bool IsDead = false;
-        public ushort CharacterType = 0;
+        public Utils.CharacterType CharacterType = 0;
         public Int32[] Slots = new Int32[12];
 
         public byte[] GetBytes()
@@ -19,7 +19,7 @@ namespace LibSc.DataModel
             using (BinaryWriter bw = new BinaryWriter(ms, Encoding.UTF8))
             {
                 bw.Write(this.IsDead);
-                bw.Write(this.CharacterType);
+                bw.Write((ushort)this.CharacterType);
                 for (int i = 0; i < 12; i++)
                 {
                     bw.Write((Int32)Slots[i]);

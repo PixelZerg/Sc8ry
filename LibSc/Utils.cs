@@ -28,8 +28,31 @@ namespace LibSc
         Weapon,
         Gear
     }
+    
+
     public class Utils
     {
+        public enum ItemType
+        {
+            Item,
+            Weapon,
+            Gear,
+        }
+        public enum CharacterType
+        {
+            Teacher,
+            Student,
+            Parent,
+            Other
+        }
+        public enum Gender
+        {
+            Thing,
+            Boy,
+            Girl,
+            Other,
+        }
+
         public static byte[] StrToBytes(string str)
         {
             using (MemoryStream ms = new MemoryStream())
