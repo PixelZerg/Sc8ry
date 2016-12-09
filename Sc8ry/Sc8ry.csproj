@@ -54,6 +54,10 @@
       <Project>{45cf73de-35d4-46a5-a6b8-c523b2381eb6}</Project>
       <Name>LibSc8ry</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibSc\LibSc.csproj">
+      <Project>{80e237ab-41fd-43eb-83ea-cd674420318d}</Project>
+      <Name>LibSc</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

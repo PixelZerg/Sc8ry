@@ -64,6 +64,14 @@ namespace LibSc
             }
         }
 
+        public static string ReadStr(BinaryReader br)
+        {
+            int len = br.ReadInt32();
+            byte[] raw = new byte[len];
+            br.Read(raw, 0, len);
+            return Encoding.UTF8.GetString(raw);
+        }
+
         public static byte[] AddSectionHeader(byte[] b, DataType dataType)
         {
             using (MemoryStream ms = new MemoryStream())
