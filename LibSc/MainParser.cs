@@ -15,7 +15,7 @@ namespace LibSc
         private int byteCount = -1;
         public int Type = -1;
 
-        public void Parse(byte[] bytes, bool HeaderIncluded = true)
+        public void Parse(byte[] bytes, bool HeaderIncluded = false)
         {
             byte[] raw = null;
             if (HeaderIncluded)
@@ -96,7 +96,7 @@ namespace LibSc
             using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
             {
                 int remaining = bytes.Length;
-                while (remaining > 0) // {In32 (4)} + {UInt16 (2)}
+                while (remaining > 6) // {In32 (4)} + {UInt16 (2)}
                 {
                     //Section Header
                     int len = br.ReadInt32();

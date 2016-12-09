@@ -14,33 +14,14 @@ namespace Sc8ry
         //golden oak academy
         public static void Main(string[] args)
         {
-            //LibSc.DataModel.CharBase c = new LibSc.DataModel.CharBase();
-            //c.CharacterType = LibSc.Utils.CharacterType.Parent;
-            //c.IsDead = false;
-            //c.Slots[0] = 10;
-            //c.Slots[1] = 9;
-            //c.Slots[2] = 8;
-            //c.Slots[3] = 7;
-            //c.Slots[4] = 2;
-            //c.Slots[5] = 1;
-            //c.Slots[6] = 699;
-            //c.Slots[7] = 42;
-
-            //byte[] cbin = c.GetBytes();
-            //LibSc.DataModel.CharBase c2 = new LibSc.DataModel.CharBase();
-
-            //using (MemoryStream ms = new MemoryStream(cbin))
-            //using (BinaryReader br = new BinaryReader(ms))
-            //{
-            //    int len = br.ReadInt32();
-            //    ushort type = br.ReadUInt16();
-            //    c2.ParseBytes(br.ReadBytes(len-2));
-            //}
-
             LibSc.DataModel.Gear g = new LibSc.DataModel.Gear();
+            g.itemData = new LibSc.DataModel.ItemData() { IsConsumable = true, ItemId = 3849 };
+            g.nd = new LibSc.DataModel.ND() { Name = "bunanna", Description = "loeoeo" };
+            g.gearData = new LibSc.DataModel.GearData() { Defense = 5 };
             byte[] b = g.GetBytes();
-            new LibSc.MainParser().Parse(b);
 
+            LibSc.DataModel.Gear g2 = new LibSc.DataModel.Gear();
+            g2.ParseBytes(LibSc.Utils.SubArray<byte>(b, 6, b.Length - 6));
         }
     }
 }

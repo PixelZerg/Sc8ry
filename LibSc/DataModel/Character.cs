@@ -32,5 +32,18 @@ namespace LibSc.DataModel
                 return Utils.AddMainHeader(ms.ToArray(), ValueType.Character);
             }
         }
+
+        public void ParseBytes(byte[] bytes)
+        {
+            MainParser mp = new MainParser();
+            mp.Parse(bytes);
+
+            this.nd = (ND)mp.Sections[DataType.ND];
+            this.charBase = (CharBase)mp.Sections[DataType.CharBase];
+            this.personalityData = (PersonalityData)mp.Sections[DataType.PersonalityData];
+            this.genderData = (GenderData)mp.Sections[DataType.GenderData];
+            this.emotionData = (EmotionData)mp.Sections[DataType.EmotionData];
+            this.statData = (StatData)mp.Sections[DataType.StatData];
+        }
     }
 }

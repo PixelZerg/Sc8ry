@@ -30,7 +30,7 @@ namespace LibSc
     }
     
 
-    public class Utils
+    public static class Utils
     {
         public enum ItemType
         {
@@ -94,6 +94,13 @@ namespace LibSc
                 bw.Write(b);
                 return ms.ToArray();
             }
+        }
+
+        public static T[] SubArray<T>(this T[] data, int index, int length)
+        {
+            T[] result = new T[length];
+            Array.Copy(data, index, result, 0, length);
+            return result;
         }
     }
 }

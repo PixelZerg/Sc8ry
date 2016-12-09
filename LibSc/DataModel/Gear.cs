@@ -13,8 +13,8 @@ namespace LibSc.DataModel
         private ItemData _itemData = new ItemData();
         public GearData gearData = new GearData();
 
-        ND IItem.nd { get { return _nd; } set { _nd = value; } }
-        ItemData IItem.itemData { get { return _itemData; } set { _itemData = value; } }
+        public ND nd { get { return _nd; } set { _nd = value; } }
+        public ItemData itemData { get { _itemData.ItemType = Utils.ItemType.Gear; return _itemData; } set { _itemData = value; } }
 
         public byte[] GetBytes()
         {
@@ -30,18 +30,12 @@ namespace LibSc.DataModel
 
         public void ParseBytes(byte[] bytes)
         {
-            using (MemoryStream ms = new MemoryStream(bytes))
-            using (BinaryReader br = new BinaryReader(ms, Encoding.UTF8))
-            {
-                int remaining = bytes.Length;
-                while (remaining > 6) // {In32 (4)} + {UInt16 (2)}
-                {
-                    //Section Header
-                    int len = br.ReadInt32();
-                    ushort dataType = br.ReadUInt16();
+            MainParser mp = new MainParser();
+            mp.Parse(bytes);
 
-                }
-            }
+            this._nd = (ND)mp.Sections[DataType.ND];
+            this._itemData = (ItemData)mp.Sections[DataType.ItemData];
+            this.gearData = (GearData)mp.Sections[DataType.GearData];
         }
     }
 }

@@ -13,8 +13,8 @@ namespace LibSc.DataModel
         private ItemData _itemData = new ItemData();
         public WeaponData weaponData = new WeaponData();
 
-        ND IItem.nd { get { return _nd; } set { _nd = value; } }
-        ItemData IItem.itemData { get { return _itemData; } set { _itemData = value; } }
+        public ND nd { get { return _nd; } set { _nd = value; } }
+        public ItemData itemData { get { _itemData.ItemType = Utils.ItemType.Weapon; return _itemData; } set { _itemData = value; } }
 
         public byte[] GetBytes()
         {
@@ -26,6 +26,16 @@ namespace LibSc.DataModel
                 bw.Write(weaponData.GetBytes());
                 return Utils.AddMainHeader(ms.ToArray(), ValueType.Weapon);
             }
+        }
+
+        public void ParseBytes(byte[] bytes)
+        {
+            MainParser mp = new MainParser();
+            mp.Parse(bytes);
+
+            this._nd = (ND)mp.Sections[DataType.ND];
+            this._itemData = (ItemData)mp.Sections[DataType.ItemData];
+            this.weaponData = (WeaponData)mp.Sections[DataType.WeaponData];
         }
     }
 }

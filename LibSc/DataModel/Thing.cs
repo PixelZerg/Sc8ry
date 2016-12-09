@@ -20,5 +20,13 @@ namespace LibSc.DataModel
                 return Utils.AddMainHeader(ms.ToArray(), ValueType.Thing);
             }
         }
+
+        public void ParseBytes(byte[] bytes)
+        {
+            MainParser mp = new MainParser();
+            mp.Parse(bytes);
+
+            this.nd = (ND)mp.Sections[DataType.ND];
+        }
     }
 }
