@@ -20,3 +20,5 @@ C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\bin\Debug\Newtonsoft.Json.dll
 C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\bin\Debug\Newtonsoft.Json.xml
 C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\bin\Debug\LibSc.dll
 C:\Users\PixelZerg\Documents\GitHub\Sc8ry\Sc8ry\bin\Debug\LibSc.pdb
+C:\Users\user\Documents\Sc8ry\Sc8ry\bin\Debug\LibSc.dll
+C:\Users\user\Documents\Sc8ry\Sc8ry\bin\Debug\LibSc.pdb

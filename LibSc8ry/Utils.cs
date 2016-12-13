@@ -8,6 +8,18 @@ namespace LibSc8ry
 {
     public static class Utils
     {
+        public static byte[] Combine(params byte[][] arrays)
+        {
+            byte[] rv = new byte[arrays.Sum(a => a.Length)];
+            int off = 0;
+            foreach (byte[] array in arrays)
+            {
+                System.Buffer.BlockCopy(array, 0, rv, off, array.Length);
+                off += array.Length;
+            }
+            return rv;
+        }
+
         public static IEnumerable<string> ChunksUpto(string str, int maxChunkSize)
         {
             for (int i = 0; i < str.Length; i += maxChunkSize)

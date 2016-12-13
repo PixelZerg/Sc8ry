@@ -30,7 +30,7 @@ namespace LibSc.DataModel
 
         public void ParseBytes(byte[] bytes)
         {
-            MainParser mp = new MainParser();
+            SectionsParser mp = new SectionsParser();
             mp.Parse(bytes);
 
             this._nd = (ND)mp.Sections[DataType.ND];
