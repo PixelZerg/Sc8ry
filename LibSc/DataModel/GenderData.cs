@@ -17,6 +17,25 @@ namespace LibSc.DataModel
         public string PronounAcc = null;
         public string PronounReflexive = null;
 
+        public GenderData()
+        {
+        }
+
+        public GenderData(Utils.Gender gender)
+        {
+            this.UseGenderEnum = true;
+            this.Gender = gender;
+        }
+
+        public GenderData(string pronoun, string pronounGenitive, string pronounAcc, string pronounReflexive)
+        {
+            this.UseGenderEnum = false;
+            this.Pronoun = pronoun;
+            this.PronounGenitive = pronounGenitive;
+            this.PronounAcc = pronounAcc;
+            this.PronounReflexive = pronounReflexive;
+        }
+
         public byte[] GetBytes()
         {
             using (MemoryStream ms = new MemoryStream())

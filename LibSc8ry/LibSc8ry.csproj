@@ -62,15 +62,18 @@
     <Compile Include="Framework\Room.cs" />
     <Compile Include="Framework\StatData.cs" />
     <Compile Include="Framework\WeaponData.cs" />
-    <Compile Include="GameData\Characters.cs" />
-    <Compile Include="GameData\Things.cs" />
     <Compile Include="GameUtils.cs" />
     <Compile Include="Graphics.cs" />
     <Compile Include="NLP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LibSc\LibSc.csproj">
+      <Project>{80e237ab-41fd-43eb-83ea-cd674420318d}</Project>
+      <Name>LibSc</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

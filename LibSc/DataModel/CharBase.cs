@@ -11,6 +11,9 @@ namespace LibSc.DataModel
     {
         public bool IsDead = false;
         public Utils.CharacterType CharacterType = 0;
+        /// <summary>
+        /// The first 2 slots is for Weapon and Gear and the rest is for item storage
+        /// </summary>
         public Int32[] Slots = new Int32[12];
 
         public byte[] GetBytes()

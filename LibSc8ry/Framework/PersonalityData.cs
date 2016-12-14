@@ -6,13 +6,6 @@ using System.Threading.Tasks;
 
 namespace LibSc8ry.Framework
 {
-    public enum Gender
-    {
-        Thing,
-        Boy,
-        Girl,
-        Other,
-    }
     public class PersonalityData
     {
         public string Name = "noname";

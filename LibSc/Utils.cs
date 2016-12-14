@@ -77,7 +77,7 @@ namespace LibSc
             using (MemoryStream ms = new MemoryStream())
             using (BinaryWriter bw = new BinaryWriter(ms, Encoding.UTF8))
             {
-                bw.Write(b.Length + 2);
+                bw.Write((Int32)(b.Length + 2));
                 bw.Write((ushort)dataType);
                 bw.Write(b);
                 return ms.ToArray();
@@ -89,11 +89,17 @@ namespace LibSc
             using (MemoryStream ms = new MemoryStream())
             using (BinaryWriter bw = new BinaryWriter(ms, Encoding.UTF8))
             {
-                bw.Write(b.Length + 2);
+                bw.Write((Int32)(b.Length + 2));
                 bw.Write((ushort)valueType);
                 bw.Write(b);
                 return ms.ToArray();
             }
+        }
+
+        public static byte[] StripHeader(byte[] b)
+        {
+            //Int32 + Ushort
+            return b.SubArray(6, b.Length - 6);
         }
 
         public static T[] SubArray<T>(this T[] data, int index, int length)

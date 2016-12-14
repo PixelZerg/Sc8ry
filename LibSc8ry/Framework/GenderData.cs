@@ -8,51 +8,100 @@ namespace LibSc8ry.Framework
 {
     public class GenderData
     {
-        public static GenderData Boy = new GenderData(Gender.Boy);
-        public static GenderData Girl = new GenderData(Gender.Girl);
-        public static GenderData Thing = new GenderData(Gender.Thing);
+        public static GenderData Boy = new GenderData(LibSc.Utils.Gender.Boy);
+        public static GenderData Girl = new GenderData(LibSc.Utils.Gender.Girl);
+        public static GenderData Thing = new GenderData(LibSc.Utils.Gender.Thing);
 
-        public string Pronoun = "he";
-        public string PronounGenitive = "his";
-        public string PronounAcc = "him";
-        public string PronounReflexive = "himself";
+        private LibSc.DataModel.GenderData data = new LibSc.DataModel.GenderData(LibSc.Utils.Gender.Boy);
 
-        public GenderData() { }
-        public GenderData(Gender gender)
+        public string Pronoun { get; private set; }
+        public string PronounGenitive { get; private set; }
+        public string PronounAcc { get; private set; }
+        public string PronounReflexive { get; private set; }
+
+        public GenderData()
+        {
+            this.data.UseGenderEnum = false;
+
+            this.Pronoun = "";
+            this.PronounAcc = "";
+            this.PronounGenitive = "";
+            this.PronounReflexive = "";
+        }
+        public GenderData(LibSc.Utils.Gender gender)
         {
             switch (gender)
             {
-                case Gender.Boy:
+                case LibSc.Utils.Gender.Boy:
+                    this.data.UseGenderEnum = true;
+                    this.data.Gender = gender;
+
+                    this.Pronoun = "he";
+                    this.PronounGenitive = "his";
+                    this.PronounAcc = "him";
+                    this.PronounReflexive = "himself";
                     return;
-                case Gender.Girl:
+                case LibSc.Utils.Gender.Girl:
+                    this.data.UseGenderEnum = true;
+                    this.data.Gender = gender;
+
                     this.Pronoun = "she";
                     this.PronounGenitive = "her";
                     this.PronounAcc = "her";
                     this.PronounReflexive = "herself";
                     return;
-                case Gender.Thing:
+                case LibSc.Utils.Gender.Thing:
+                    this.data.UseGenderEnum = true;
+                    this.data.Gender = gender;
+
                     this.Pronoun = "it";
                     this.PronounGenitive = "its";
                     this.PronounAcc = "it";
                     this.PronounReflexive = "itself";
                     return;
             }
+
+            this.data.UseGenderEnum = false;
+            this.data.Gender = gender;
+
+            this.Pronoun = "";
+            this.PronounAcc = "";
+            this.PronounGenitive = "";
+            this.PronounReflexive = "";
         }
+
+
+
         public GenderData(string pronoun, string pronounGenitive, string pronounAcc, string pronounReflexive)
         {
+            this.data.UseGenderEnum = false;
+
             this.Pronoun = pronoun;
             this.PronounGenitive = pronounGenitive;
             this.PronounAcc = pronounAcc;
             this.PronounReflexive = pronounReflexive;
+
+            this.data.Pronoun = pronoun;
+            this.data.PronounGenitive = pronounGenitive;
+            this.data.PronounAcc = pronounAcc;
+            this.data.PronounReflexive = pronounReflexive;
         }
 
         public GenderData Clone()
         {
-            GenderData r = new GenderData();
-            r.Pronoun = this.Pronoun;
-            r.PronounAcc = this.PronounAcc;
-            r.PronounGenitive = this.PronounGenitive;
-            r.PronounReflexive = this.PronounReflexive;
+            GenderData r = null;
+            //r.Pronoun = this.Pronoun;
+            //r.PronounAcc = this.PronounAcc;
+            //r.PronounGenitive = this.PronounGenitive;
+            //r.PronounReflexive = this.PronounReflexive;
+            if (this.data.UseGenderEnum)
+            {
+                r = new GenderData(this.data.Gender);
+            }
+            else
+            {
+                r = new GenderData(this.Pronoun, this.PronounGenitive, this.PronounAcc, this.PronounReflexive);
+            }
             return r;
         }
     }
